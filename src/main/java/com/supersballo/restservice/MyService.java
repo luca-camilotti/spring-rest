@@ -22,8 +22,19 @@ public class MyService {
 		return repo.findById((long) id);
 	}
 
+	// Create a new employee
 	public Employee addNewEmployee(Employee emp) {
 		return repo.save(emp);  // use the repository built-in save() method
+	}
+	
+	// Update an existing employee
+	public Employee updateEmployee(Employee emp, long id) {
+		if(repo.findById(id).isPresent()) {
+			emp.setId(id);
+			repo.save(emp);
+			return emp;
+		}
+	    return null;
 	}
 }
 
