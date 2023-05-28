@@ -36,5 +36,10 @@ public class MyService {
 		}
 	    return null;
 	}
+	
+	// Delete employee
+	public void deleteEmployee(long id){
+        repo.deleteById(id);
+    }
 }
 
