@@ -28,7 +28,7 @@ public class ApiController {
    
    @RequestMapping( "/hello" )
    public String echo() {
-      return "Hello World!";
+      return "Hello Rest Spring Boot!";
    }
    @GetMapping( "/test" )
 	public List<String> welcome() {
