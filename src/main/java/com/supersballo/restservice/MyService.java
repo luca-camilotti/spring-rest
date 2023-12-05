@@ -26,7 +26,7 @@ public class MyService {
 	public Employee addNewEmployee(Employee emp) {
 		return repo.save(emp);  // use the repository built-in save() method
 	}
-	
+
 	// Update an existing employee
 	public Employee updateEmployee(Employee emp, long id) {
 		if(repo.findById(id).isPresent()) {
@@ -34,12 +34,19 @@ public class MyService {
 			repo.save(emp);
 			return emp;
 		}
-	    return null;
+		return null;
 	}
-	
+
 	// Delete employee
 	public void deleteEmployee(long id){
-        repo.deleteById(id);
-    }
+		repo.deleteById(id);
+	}
+
+	// Delete employee
+	public Optional<Employee> deleteEmployeeIfPresent(long id){
+		Optional<Employee> emp = repo.findById(id);
+		deleteEmployee(id);
+		return emp;	        
+	}
 }
 
